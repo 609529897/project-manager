@@ -10,14 +10,6 @@ interface ProjectItemProps {
   onStop: () => void
 }
 
-function FolderIcon(): JSX.Element {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round">
-      <path d="M1.5 4.5a1 1 0 0 1 1-1h3l1.5 1.5h4a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-8.5a1 1 0 0 1-1-1z" />
-    </svg>
-  )
-}
-
 export default function ProjectItem({
   project,
   isSelected,
@@ -36,9 +28,8 @@ export default function ProjectItem({
       onClick={onSelect}
     >
       <div className="project-item-main">
-        <span className={`project-status-dot ${isRunning ? 'running' : ''}`} />
-        <span className="project-item-icon">
-          <FolderIcon />
+        <span className="project-item-visual">
+          <span className={`project-status-dot ${isRunning ? 'running' : ''}`} />
         </span>
         <div className="project-item-info">
           <span className="project-item-name">{project.name}</span>

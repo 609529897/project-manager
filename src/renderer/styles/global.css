@@ -149,14 +149,14 @@ input, textarea, .log-panel-content {
 
 /* ===== 侧边栏项目条目 ===== */
 .project-item {
-  padding: 8px 10px 8px 12px;
+  padding: 10px 12px;
   cursor: pointer;
   border-radius: 6px;
   transition: background 0.1s;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  margin-bottom: 1px;
+  gap: 6px;
+  margin-bottom: 2px;
 }
 
 .project-item:hover {
@@ -174,7 +174,7 @@ input, textarea, .log-panel-content {
 .project-item-main {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .project-item-icon {
@@ -191,6 +191,13 @@ input, textarea, .log-panel-content {
 .project-item-selected .project-item-icon {
   color: var(--accent-blue);
   opacity: 0.9;
+}
+
+.project-item-visual {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .project-status-dot {
@@ -212,7 +219,7 @@ input, textarea, .log-panel-content {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 3px;
 }
 
 .project-item-name {
