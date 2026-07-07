@@ -1,7 +1,7 @@
 {
   "name": "project-manager",
   "version": "1.0.0",
-  "description": "前端项目管理器 - 一键启动多个前端项目的开发环境",
+  "description": "开发码头 - 一键管理多个本地项目的开发环境",
   "main": "./out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
@@ -30,14 +30,26 @@
   },
   "build": {
     "appId": "com.project-manager.app",
-    "productName": "Project Manager",
+    "productName": "开发码头",
     "directories": {
       "output": "dist"
     },
     "files": [
       "out/**/*"
     ],
+    "extraResources": [
+      {
+        "from": "resources/icons",
+        "to": "icons",
+        "filter": [
+          "icon-1024.png",
+          "trayTemplate.png",
+          "trayTemplate@2x.png"
+        ]
+      }
+    ],
     "mac": {
+      "icon": "resources/icon.icns",
       "target": [
         "dmg"
       ],
