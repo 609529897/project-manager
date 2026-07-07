@@ -1,0 +1,181 @@
+/* ===== 主布局 ===== */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* ===== 项目详情头部 ===== */
+.project-detail-header {
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.project-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.project-detail-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 16px 24px 20px;
+  gap: 14px;
+}
+
+/* ===== 命令编辑区 ===== */
+.command-section {
+  flex-shrink: 0;
+}
+
+.command-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.command-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.command-input {
+  flex: 1;
+  height: 34px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.command-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-blue) 15%, transparent);
+}
+
+.command-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== 操作按钮 ===== */
+.btn-action {
+  height: 34px;
+  padding: 0 18px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.12s, transform 0.1s;
+  letter-spacing: 0.2px;
+}
+
+.btn-action:active {
+  transform: scale(0.97);
+}
+
+.btn-start {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+.btn-start:hover {
+  opacity: 0.88;
+}
+
+.btn-stop {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error);
+  border: 1px solid color-mix(in srgb, var(--color-error) 20%, transparent);
+}
+
+.btn-stop:hover {
+  background: color-mix(in srgb, var(--color-error) 18%, transparent);
+}
+
+/* ===== 状态指示圆点（详情头部） ===== */
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-stopped);
+  flex-shrink: 0;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+
+.status-dot.running {
+  background: var(--color-running);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-running) 50%, transparent);
+}
+
+/* ===== 空状态 ===== */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  padding: 40px;
+}
+
+.empty-icon {
+  font-size: 52px;
+  opacity: 0.3;
+  margin-bottom: 4px;
+}
+
+.empty-text {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.empty-hint {
+  font-size: 13px;
+  margin: 0;
+  color: var(--text-muted);
+}

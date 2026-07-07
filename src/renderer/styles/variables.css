@@ -1,0 +1,63 @@
+/* ===== Xcode 风格双主题变量 ===== */
+:root,
+[data-theme='dark'] {
+  /* 背景色系 */
+  --bg-sidebar: #1d1d1f;        /* Xcode 深色侧边栏 */
+  --bg-primary: #252526;        /* 主内容区深灰 */
+  --bg-secondary: #1c1c1e;      /* 更深的容器背景 */
+  --bg-hover: #2c2c2e;          /* hover 状态 */
+  --bg-input: #2c2c2e;          /* 输入框背景 */
+  --bg-toolbar: #1d1d1f;        /* 顶部工具栏 */
+
+  /* 文字色系 */
+  --text-primary: #f5f5f7;      /* 主文字近白，清晰可读 */
+  --text-secondary: #aeaeb2;    /* 次要文字浅灰，足够可见 */
+  --text-muted: #8e8e93;        /* 占位/辅助文字 */
+
+  /* 边框与分割线 */
+  --border-color: #38383a;      /* 细分割线 */
+  --border-light: #2c2c2e;
+
+  /* 交互色 */
+  --accent-blue: #0a84ff;       /* Xcode 冰蓝色 */
+  --accent-blue-hover: #409cff;
+
+  /* 状态指示 */
+  --color-running: #30d158;     /* 绿色运行中 */
+  --color-stopped: #48484a;     /* 灰色已停止 */
+  --color-error: #ff453a;       /* 错误文字红 */
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+}
+
+[data-theme='light'] {
+  --bg-sidebar: #f0f0f2;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9fa;
+  --bg-hover: #e8e8ec;
+  --bg-input: #ffffff;
+  --bg-toolbar: #f0f0f2;
+
+  --text-primary: #1d1d1f;
+  --text-secondary: #515154;
+  --text-muted: #8e8e93;
+
+  --border-color: #d2d2d7;
+  --border-light: #e5e5ea;
+
+  --accent-blue: #007aff;
+  --accent-blue-hover: #0060df;
+
+  --color-running: #30d158;
+  --color-stopped: #aeaeb2;
+  --color-error: #ff3b30;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
