@@ -22,17 +22,16 @@
 
 /* ===== 项目详情头部 ===== */
 .project-detail-header {
-  padding: 18px 24px 14px;
-  border-bottom: 1px solid var(--border-color);
+  padding: 24px 24px 8px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-shrink: 0;
 }
 
 .project-title-group {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
 }
 
@@ -40,8 +39,20 @@
   font-size: 17px;
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0;
+  margin: 0 0 3px;
   letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.project-path-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
 }
 
 .project-detail-body {
@@ -49,8 +60,8 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 16px 24px 20px;
-  gap: 14px;
+  padding: 8px 24px 20px;
+  gap: 12px;
 }
 
 /* ===== 命令编辑区 ===== */
@@ -58,22 +69,40 @@
   flex-shrink: 0;
 }
 
+.command-card {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 14px 18px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
 .command-label {
-  display: block;
-  font-size: 10.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
   font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.command-label-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  font-size: 10px;
 }
 
 .command-input-row {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 0;
 }
 
+/* 输入框和启动按钮无缝连接 */
 .command-input {
   flex: 1;
   height: 34px;
@@ -83,32 +112,39 @@
   color: var(--text-primary);
   background: var(--bg-input);
   border: 1px solid var(--border-color);
-  border-radius: 7px;
+  border-right: none;
+  border-radius: 7px 0 0 7px;
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.command-input:hover {
+  border-color: var(--text-muted);
 }
 
 .command-input:focus {
   border-color: var(--accent-blue);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-blue) 15%, transparent);
+  z-index: 1;
+  position: relative;
 }
 
 .command-input::placeholder {
   color: var(--text-muted);
 }
 
-/* ===== 操作按钮 ===== */
+/* 按钮与输入框无缝相连 */
 .btn-action {
   height: 34px;
-  padding: 0 18px;
-  font-size: 12.5px;
+  padding: 0 16px;
+  font-size: 12px;
   font-weight: 600;
   border: none;
-  border-radius: 7px;
+  border-radius: 0 7px 7px 0;
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.12s, transform 0.1s;
-  letter-spacing: 0.2px;
+  transition: opacity 0.12s, background 0.15s, transform 0.1s;
+  letter-spacing: 0.3px;
 }
 
 .btn-action:active {
@@ -147,6 +183,12 @@
 .status-dot.running {
   background: var(--color-running);
   box-shadow: 0 0 8px color-mix(in srgb, var(--color-running) 50%, transparent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 6px color-mix(in srgb, var(--color-running) 30%, transparent); }
+  50% { box-shadow: 0 0 12px color-mix(in srgb, var(--color-running) 60%, transparent); }
 }
 
 /* ===== 空状态 ===== */
@@ -156,15 +198,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--text-secondary);
   padding: 40px;
+  user-select: none;
 }
 
 .empty-icon {
-  font-size: 52px;
-  opacity: 0.3;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .empty-text {

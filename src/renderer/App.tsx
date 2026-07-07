@@ -140,16 +140,20 @@ export default function App(): JSX.Element {
         <main className="main-content">
           {selectedProject ? (
             <>
-              <div className="project-detail-header">
-                <div className="project-title-group">
-                  <span
-                    className={`status-dot ${statuses[selectedProject.path] === 'running' ? 'running' : ''}`}
-                  />
-                  <h2 className="project-title">{selectedProject.name}</h2>
+                <div className="project-detail-header">
+                  <div className="project-title-group">
+                    <span
+                      className={`status-dot ${statuses[selectedProject.path] === 'running' ? 'running' : ''}`}
+                    />
+                    <div>
+                      <h2 className="project-title">{selectedProject.name}</h2>
+                      <span className="project-path-label">{selectedProject.path}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
               <div className="project-detail-body">
                 <div className="command-section">
+                  <div className="command-card">
                   <label className="command-label">启动命令</label>
                   <div className="command-input-row">
                     <input
@@ -174,13 +178,17 @@ export default function App(): JSX.Element {
                       {statuses[selectedProject.path] === 'running' ? '停止' : '启动'}
                     </button>
                   </div>
+                  </div>
                 </div>
-                <LogPanel logs={logs[selectedProject.path] ?? []} />
+                <LogPanel logs={logs[selectedProject.path] ?? []} status={statuses[selectedProject.path]} />
               </div>
             </>
           ) : (
             <div className="empty-state">
-              <div className="empty-icon">📁</div>
+              <svg className="empty-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" opacity="0.35">
+                <path d="M8 20a4 4 0 0 1 4-4h14l6 6h24a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z" />
+                <path d="M8 28h48" strokeWidth="1.2" />
+              </svg>
               <p className="empty-text">从左侧添加项目文件夹</p>
               <p className="empty-hint">或将文件夹拖拽到窗口即可添加</p>
             </div>

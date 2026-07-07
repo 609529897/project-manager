@@ -7,7 +7,9 @@
   --bg-secondary: #1c1c1e;      /* 更深的容器背景 */
   --bg-hover: #2c2c2e;          /* hover 状态 */
   --bg-input: #2c2c2e;          /* 输入框背景 */
+  --bg-input-hover: #353538;    /* 输入框 hover */
   --bg-toolbar: #1d1d1f;        /* 顶部工具栏 */
+  --bg-terminal: #18181a;       /* 日志终端背景（比主背景更深） */
 
   /* 文字色系 */
   --text-primary: #f5f5f7;      /* 主文字近白，清晰可读 */
@@ -43,6 +45,8 @@
   --bg-hover: #e8e8ec;
   --bg-input: #ffffff;
   --bg-toolbar: #f0f0f2;
+  --bg-terminal: #f2f2f4;
+  --bg-input-hover: #f5f5f7;
 
   --text-primary: #1d1d1f;
   --text-secondary: #515154;

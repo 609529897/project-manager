@@ -1,11 +1,12 @@
 import { useRef, useEffect } from 'react'
-import type { LogEntry } from '../../shared/types'
+import type { LogEntry, ProcessStatus } from '../../shared/types'
 
 interface LogPanelProps {
   logs: LogEntry[]
+  status?: ProcessStatus
 }
 
-export default function LogPanel({ logs }: LogPanelProps): JSX.Element {
+export default function LogPanel({ logs, status }: LogPanelProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null)
   const autoScrollRef = useRef(true)
 
@@ -27,7 +28,10 @@ export default function LogPanel({ logs }: LogPanelProps): JSX.Element {
   return (
     <div className="log-panel">
       <div className="log-panel-header">
-        <span className="log-panel-title">运行日志</span>
+        <div className="log-panel-title">
+          <span className={`log-indicator ${status === 'running' ? 'running' : ''}`} />
+          运行日志
+        </div>
         <span className="log-panel-count">{logs.length} 行</span>
       </div>
       <div
