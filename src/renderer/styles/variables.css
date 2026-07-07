@@ -20,9 +20,9 @@
   --border-color: #38383a;      /* 细分割线 */
   --border-light: #2c2c2e;
 
-  /* 交互色 */
-  --accent-blue: #0a84ff;       /* Xcode 冰蓝色 */
-  --accent-blue-hover: #409cff;
+  /* 交互色 - 橘色 */
+  --accent-blue: #ff6b35;       /* 橘色 */
+  --accent-blue-hover: #ff8555;
 
   /* 状态指示 */
   --color-running: #30d158;     /* 绿色运行中 */
@@ -55,8 +55,8 @@
   --border-color: #d2d2d7;
   --border-light: #e5e5ea;
 
-  --accent-blue: #007aff;
-  --accent-blue-hover: #0060df;
+  --accent-blue: #e85d26;
+  --accent-blue-hover: #d94d1a;
 
   --color-running: #30d158;
   --color-stopped: #aeaeb2;
