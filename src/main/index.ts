@@ -51,16 +51,10 @@ function createTray(): void {
   if (process.platform !== 'darwin') return
 
   const scaleFactor = screen.getPrimaryDisplay().scaleFactor
+  // 与 bilibili 一致：16×16 / 32×32 template，不使用 resize
   const iconFile = scaleFactor >= 2 ? 'trayTemplate@2x.png' : 'trayTemplate.png'
-  let icon = nativeImage.createFromPath(getResourcePath('icons', iconFile))
+  const icon = nativeImage.createFromPath(getResourcePath('icons', iconFile))
   icon.setTemplateImage(true)
-
-  // 整体缩小菜单栏图标显示尺寸（pt），不缩小内部图形比例
-  const displayPt = 12
-  const displayPx = Math.round(displayPt * scaleFactor)
-  if (!icon.isEmpty()) {
-    icon = icon.resize({ width: displayPx, height: displayPx, quality: 'best' })
-  }
 
   tray = new Tray(icon)
   tray.setToolTip('开发码头')
