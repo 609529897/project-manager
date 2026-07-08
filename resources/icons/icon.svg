@@ -1,6 +1,6 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- 外圈 -->
-  <circle cx="256" cy="256" r="205" stroke="#ff6b35" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- <circle cx="256" cy="256" r="205" stroke="#ff6b35" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/> -->
   <!-- 六辐条与把手 -->
   <path
     d="
@@ -23,5 +23,5 @@
     stroke-linejoin="round"
   />
   <!-- 中心舵盘 -->
-  <circle cx="256" cy="256" r="80" stroke="#ff6b35" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="256" cy="256" r="100" stroke="#ff6b35" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
