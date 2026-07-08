@@ -1,6 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <!-- 无背景色，仅保留图形；圆角外透明，避免「一大块黑底」 -->
-  <rect x="144" y="176" width="224" height="28" rx="14" fill="#636366"/>
-  <rect x="112" y="236" width="288" height="36" rx="18" fill="#ff6b35"/>
-  <rect x="144" y="304" width="224" height="28" rx="14" fill="#636366"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 外圈 -->
+  <circle cx="256" cy="256" r="205" stroke="#ff6b35" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 六辐条与把手 -->
+  <path
+    d="
+      M 256 256 L 433.5 358.5
+      M 422.5 377.55 L 444.5 339.45
+      M 256 256 L 256 461
+      M 234 461 L 278 461
+      M 256 256 L 78.5 358.5
+      M 67.5 339.45 L 89.5 377.55
+      M 256 256 L 78.5 153.5
+      M 89.5 134.45 L 67.5 172.55
+      M 256 256 L 256 51
+      M 278 51 L 234 51
+      M 256 256 L 433.5 153.5
+      M 444.5 172.55 L 422.5 134.45
+    "
+    stroke="#ff6b35"
+    stroke-width="24"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- 中心舵盘 -->
+  <circle cx="256" cy="256" r="80" stroke="#ff6b35" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
