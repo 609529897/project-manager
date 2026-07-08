@@ -99,6 +99,10 @@ export default function App(): JSX.Element {
     [loadProjects]
   )
 
+  const handleClearLogs = useCallback((projectPath: string) => {
+    setLogs((prev) => ({ ...prev, [projectPath]: [] }))
+  }, [])
+
   /** 启动项目 */
   const handleStart = useCallback(
     async (projectPath: string) => {
@@ -180,7 +184,7 @@ export default function App(): JSX.Element {
                   </div>
                   </div>
                 </div>
-                <LogPanel logs={logs[selectedProject.path] ?? []} status={statuses[selectedProject.path]} />
+                <LogPanel logs={logs[selectedProject.path] ?? []} status={statuses[selectedProject.path]} onClear={() => handleClearLogs(selectedProject.path)} />
               </div>
             </>
           ) : (

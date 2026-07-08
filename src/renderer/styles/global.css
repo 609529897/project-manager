@@ -415,6 +415,29 @@ input, textarea, .log-panel-content {
   letter-spacing: 0.5px;
 }
 
+.log-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.log-panel-clear {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.log-panel-clear:hover {
+  color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+}
+
 .log-indicator {
   width: 6px;
   height: 6px;

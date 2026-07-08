@@ -4,9 +4,10 @@ import type { LogEntry, ProcessStatus } from '../../shared/types'
 interface LogPanelProps {
   logs: LogEntry[]
   status?: ProcessStatus
+  onClear?: () => void
 }
 
-export default function LogPanel({ logs, status }: LogPanelProps): JSX.Element {
+export default function LogPanel({ logs, status, onClear }: LogPanelProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null)
   const autoScrollRef = useRef(true)
 
@@ -32,7 +33,18 @@ export default function LogPanel({ logs, status }: LogPanelProps): JSX.Element {
           <span className={`log-indicator ${status === 'running' ? 'running' : ''}`} />
           运行日志
         </div>
-        <span className="log-panel-count">{logs.length} 行</span>
+        <div className="log-panel-actions">
+          <span className="log-panel-count">{logs.length} 行</span>
+          {onClear && (
+            <button
+              className="log-panel-clear"
+              onClick={onClear}
+              title="清空当前项目日志"
+            >
+              清空
+            </button>
+          )}
+        </div>
       </div>
       <div
         className="log-panel-content"
