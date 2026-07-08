@@ -1,4 +1,4 @@
-import { spawn, type ChildProcess } from 'node:child_process'
+import { spawn, execFileSync, type ChildProcess } from 'node:child_process'
 import { execSync } from 'node:child_process'
 import { BrowserWindow } from 'electron'
 import type { LogEntry, ProcessStatus } from '../shared/types'
@@ -19,6 +19,48 @@ interface ProcessEntry {
 class ProcessManager {
   /** key = 项目路径，value = 进程记录 */
   private processes = new Map<string, ProcessEntry>()
+  /** 缓存用户 shell 的 PATH */
+  private shellPath: string | null = null
+
+  /** 获取用户 shell 的完整 PATH（登录 + 交互模式），并附常用 fallback 路径 */
+  private getUserShellPath(): string {
+    if (this.shellPath !== null) {
+      return this.shellPath
+    }
+
+    if (process.platform === 'win32') {
+      this.shellPath = process.env.PATH || ''
+      return this.shellPath
+    }
+
+    const shell = process.env.SHELL || '/bin/zsh'
+    const fallbackPaths = [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/opt/local/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      `${process.env.HOME || ''}/.yarn/bin`,
+      `${process.env.HOME || ''}/.local/bin`,
+      `${process.env.HOME || ''}/.nvm/versions/node/default/bin`
+    ].filter(Boolean)
+
+    try {
+      const path = execFileSync(
+        shell,
+        ['-i', '-l', '-c', 'printf "%s" "$PATH"'],
+        { encoding: 'utf-8', timeout: 3000 }
+      ).trim()
+      this.shellPath = path ? `${path}:${fallbackPaths.join(':')}` : fallbackPaths.join(':')
+    } catch (err) {
+      console.warn('[ProcessManager] 获取 shell PATH 失败:', err)
+      this.shellPath = fallbackPaths.join(':')
+    }
+
+    return this.shellPath
+  }
 
   /**
    * 启动一个项目的开发命令
@@ -37,20 +79,21 @@ class ProcessManager {
       this.processes.delete(projectPath)
     }
 
-    // 解析命令：command 如 "yarn run dev" → cmd="yarn", args=["run", "dev"]
+    console.log(`[ProcessManager] 启动 ${projectName}: ${command} (cwd: ${projectPath})`)
+
     const parts = command.trim().split(/\s+/)
     const cmd = parts[0]
     const args = parts.slice(1)
 
-    console.log(`[ProcessManager] 启动 ${projectName}: ${command} (cwd: ${projectPath})`)
-
-    // 创建子进程，设置 cwd 到项目目录
     const child = spawn(cmd, args, {
       cwd: projectPath,
       stdio: ['ignore', 'pipe', 'pipe'],
-      shell: process.platform === 'win32', // Windows 需要 shell
-      // detached 使子进程独立于父进程的进程组，方便跨平台销毁
-      detached: process.platform !== 'win32'
+      shell: process.platform === 'win32',
+      detached: process.platform !== 'win32',
+      env: {
+        ...process.env,
+        PATH: this.getUserShellPath()
+      }
     })
 
     const entry: ProcessEntry = {
